@@ -1,6 +1,10 @@
 package ru.azzgzz;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class CodeWarsTasksTest {
@@ -45,6 +49,26 @@ public class CodeWarsTasksTest {
     public void compTest() {
         int[] a = new int[]{121, 144, 19, 161, 19, 144, 19, 11};
         int[] b = new int[]{121, 14641, 20736, 361, 25921, 361, 20736, 361};
-        assertEquals(true, CodeWarsTasks.comp(a, b));
+        assertTrue(CodeWarsTasks.comp(a, b));
+    }
+
+
+    @Test
+    public void countSmileysTest() {
+        List<String> a = new ArrayList<>();
+        a.add(":)"); a.add(":D"); a.add(":-}"); a.add(":-()"); a.add(":):)");
+        assertEquals(2, CodeWarsTasks.countSmileys(a));
+
+        a = new ArrayList<>();
+        a.add(":)"); a.add("XD"); a.add(":0}"); a.add("x:-"); a.add("):-"); a.add("D:");
+        assertEquals(1, CodeWarsTasks.countSmileys(a));
+
+        a =  new ArrayList<>();
+        a.add(":)"); a.add(":D"); a.add("X-}"); a.add("xo)"); a.add(":X"); a.add(":-3"); a.add(":3");
+        assertEquals(2, CodeWarsTasks.countSmileys(a));
+
+        a =  new ArrayList<>();
+        a.add(":)"); a.add(":)"); a.add("x-]"); a.add(":ox"); a.add(";-("); a.add(";-)"); a.add(";~("); a.add(":~D");
+        assertEquals(4, CodeWarsTasks.countSmileys(a));
     }
 }

@@ -1,12 +1,10 @@
 package ru.azzgzz;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.lang.Math.*;
 
 public class CodeWarsTasks {
-
 
     public static int nbYear(int p0, double percent, int aug, int p) {
         percent /= 100;
@@ -14,6 +12,7 @@ public class CodeWarsTasks {
             return (int) ceil((p - p0) / aug);
         return (int) ceil((log(percent * p + aug) - log(p0 * percent + aug)) / log(1 + percent));
     }
+
 
     public static int findShort(String s) {
         String[] ss = s.split(" ");
@@ -48,6 +47,7 @@ public class CodeWarsTasks {
 
         return Integer.parseInt(tmp);
     }
+
 
     public static int sqr(int a) {
         return a * a;
@@ -86,27 +86,32 @@ public class CodeWarsTasks {
 
     public static boolean comp(int[] a, int[] b) {
 
-        if (a == null || b == null)     return false;
+        if (a == null || b == null) return false;
         if (b.length == 0 && a.length == 0) return true;
         if (a.length != b.length) return false;
 
-        a = Arrays.stream(a).map(n -> n*n).sorted().toArray();
+        a = Arrays.stream(a).map(n -> n * n).sorted().toArray();
         Arrays.sort(b);
-        return Arrays.equals(a,b);
+        return Arrays.equals(a, b);
     }
 
-    public static void main(String[] args) {
+    /**
+     * 6kyu
+     * Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+     */
+    public static int countSmileys(List<String> arr) {
 
-        int[] a = {1, -1, 0, 5, 1};
-        a = Arrays.stream(a).map(n -> abs(n)).sorted().toArray();
-
-        Collection<Integer> collection;
-        collection = Arrays.stream(a).boxed().collect(Collectors.toList());
-
-        collection.forEach(q -> q=q*q);
-
-        System.out.println(collection.toString());
+        return (int) arr.stream()
+                .map(string -> string.matches("[:;][-~]?[)D]"))
+                .filter(a -> a == true)
+                .count();
     }
+
+
+//    public static void main(String[] args) {
+//
+//        System.out.println(":):)".matches(":[)D]"));
+//    }
 
 
 }
