@@ -11,6 +11,21 @@ public class CodeWarsTasksTest {
 
 
     @Test
+    public void ex() {
+        char[][] mountain = {
+                "^^^^^^        ".toCharArray(),
+                " ^^^^^^^^     ".toCharArray(),
+                "  ^^^^^^^     ".toCharArray(),
+                "  ^^^^^       ".toCharArray(),
+                "  ^^^^^^^^^^^ ".toCharArray(),
+                "  ^^^^^^      ".toCharArray(),
+                "  ^^^^        ".toCharArray()
+        };
+        assertEquals(3, BirdMountain.peakHeight(mountain));
+    }
+
+
+    @Test
     public void test1() {
         String a[] = new String[]{ "arp", "live", "arp", "strong", "dfsd" };
         String b[] = new String[] { "lively", "alive", "harp", "sharp", "armstrong" };

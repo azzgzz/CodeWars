@@ -1,5 +1,8 @@
 package ru.azzgzz;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,6 +14,7 @@ public class CodeWarsTasks {
 
     /**
      * Given two arrays of strings a1 and a2
+     *
      * @return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2
      */
     public static String[] inArrayTask2(String[] array1, String[] array2) {
@@ -19,7 +23,7 @@ public class CodeWarsTasks {
         List<String> set2 = Arrays.stream(array2).distinct().sorted().collect(Collectors.toList());
 
         set1.removeIf(x -> {
-            for (String s: set2) {
+            for (String s : set2) {
                 if (s.contains(x))
                     return false;
             }
@@ -34,11 +38,12 @@ public class CodeWarsTasks {
         return (Arrays.stream(array1).distinct().sorted())
                 .filter(s1 -> Arrays.stream(array2)
                         .anyMatch(s2 -> s2.contains(s1)))
-                .toArray(String[] :: new);
+                .toArray(String[]::new);
     }
 
     /**
      * 6kyu
+     *
      * @param text can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits
      * @return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string
      */
@@ -162,13 +167,12 @@ public class CodeWarsTasks {
 
     public static void main(String[] args) {
 
-        char a = 'a';
+        int[] arg = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15};
 
-        int[] b = new int[1024];
 
-        b[a] = 1;
+        int n = 5;
 
-        Arrays.stream(b).filter(x -> x > 0).forEach(x -> System.out.println(x));
+        System.out.println(        IntStream.range(1, n+1).anyMatch(i-> i==4));
 
     }
 
