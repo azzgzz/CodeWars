@@ -29,7 +29,6 @@ public class CodeWarsTasks {
         return set1.toArray(new String[0]);
     }
 
-
     public static String[] inArrayTask(String[] array1, String[] array2) {
 
         return (Arrays.stream(array1).distinct().sorted())
