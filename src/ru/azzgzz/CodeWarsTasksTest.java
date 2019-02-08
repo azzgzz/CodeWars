@@ -11,6 +11,14 @@ public class CodeWarsTasksTest {
 
 
     @Test
+    public void test1() {
+        String a[] = new String[]{ "arp", "live", "arp", "strong", "dfsd" };
+        String b[] = new String[] { "lively", "alive", "harp", "sharp", "armstrong" };
+        String r[] = new String[] { "arp", "live", "strong" };
+        assertArrayEquals(r, CodeWarsTasks.inArrayTask(a, b));
+    }
+
+    @Test
     public void duplicateContTest() {
         assertEquals(0, CodeWarsTasks.duplicateCount("abcde"));
 

@@ -1,12 +1,42 @@
 package ru.azzgzz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.lang.Math.*;
 
 public class CodeWarsTasks {
+
+    /**
+     * Given two arrays of strings a1 and a2
+     * @return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2
+     */
+    public static String[] inArrayTask2(String[] array1, String[] array2) {
+
+        List<String> set1 = Arrays.stream(array1).distinct().sorted().collect(Collectors.toList());
+        List<String> set2 = Arrays.stream(array2).distinct().sorted().collect(Collectors.toList());
+
+        set1.removeIf(x -> {
+            for (String s: set2) {
+                if (s.contains(x))
+                    return false;
+            }
+            return true;
+        });
+
+        return set1.toArray(new String[0]);
+    }
+
+
+    public static String[] inArrayTask(String[] array1, String[] array2) {
+
+        return (Arrays.stream(array1).distinct().sorted())
+                .filter(s1 -> Arrays.stream(array2)
+                        .anyMatch(s2 -> s2.contains(s1)))
+                .toArray(String[] :: new);
+    }
 
     /**
      * 6kyu
