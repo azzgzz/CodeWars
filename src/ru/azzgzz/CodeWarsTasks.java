@@ -1,10 +1,33 @@
 package ru.azzgzz;
 
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.lang.Math.*;
 
 public class CodeWarsTasks {
+
+    /**
+     * 6kyu
+     * @param text can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits
+     * @return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string
+     */
+    public static int duplicateCount(String text) {
+
+        int[] cTable = new int[256];
+
+        int[] intCharsArray = text.codePoints().toArray();
+
+        for (int i = 0; i < intCharsArray.length; i++) {
+            cTable[intCharsArray[i]]++;
+        }
+
+        return (int) Arrays.stream(cTable)
+                .filter(x -> x > 1)
+                .count();
+    }
+
 
     public static int nbYear(int p0, double percent, int aug, int p) {
         percent /= 100;
@@ -108,10 +131,17 @@ public class CodeWarsTasks {
     }
 
 
-//    public static void main(String[] args) {
-//
-//        System.out.println(":):)".matches(":[)D]"));
-//    }
+    public static void main(String[] args) {
+
+        char a = 'a';
+
+        int[] b = new int[1024];
+
+        b[a] = 1;
+
+        Arrays.stream(b).filter(x -> x > 0).forEach(x -> System.out.println(x));
+
+    }
 
 
 }

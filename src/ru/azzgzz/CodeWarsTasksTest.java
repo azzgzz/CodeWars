@@ -9,6 +9,28 @@ import static org.junit.Assert.*;
 
 public class CodeWarsTasksTest {
 
+
+    @Test
+    public void duplicateContTest() {
+        assertEquals(0, CodeWarsTasks.duplicateCount("abcde"));
+
+        assertEquals(1, CodeWarsTasks.duplicateCount("abcdea"));
+
+        assertEquals(1, CodeWarsTasks.duplicateCount("indivisibility"));
+
+        String testThousandA = new String(new char[1000]).replace('\0', 'a');
+        String testHundredB = new String(new char[100]).replace('\0', 'b');
+        String testTenC = new String(new char[10]).replace('\0', 'c');
+        String test1CapitalA = new String(new char[1]).replace('\0', 'A');
+        String test1d = new String(new char[1]).replace('\0', 'd');
+        String test = test1d + test1CapitalA + testTenC +
+                testHundredB + testThousandA;
+
+
+        assertEquals(3, CodeWarsTasks.duplicateCount(test));
+    }
+
+
     @Test
     public void isogramTest() {
         assertEquals(true, CodeWarsTasks.isIsogram("Dermatoglyphics"));
@@ -24,11 +46,11 @@ public class CodeWarsTasksTest {
     @Test
     public void shouldWorkForSomeExamples() throws Exception {
         assertEquals("negative numbers aren't square numbers", false, CodeWarsTasks.isSquare(-1));
-        assertEquals("0 is a square number (0 * 0)",    true,   CodeWarsTasks.isSquare(0));
-        assertEquals("3 isn't a square number", false,  CodeWarsTasks.isSquare(3));
-        assertEquals("4 is a square number (2 * 2)",    true,   CodeWarsTasks.isSquare(4));
-        assertEquals("25 is a square number (5 * 5)",   true,   CodeWarsTasks.isSquare(25));
-        assertEquals("26 isn't a square number",false,  CodeWarsTasks.isSquare(26));
+        assertEquals("0 is a square number (0 * 0)", true, CodeWarsTasks.isSquare(0));
+        assertEquals("3 isn't a square number", false, CodeWarsTasks.isSquare(3));
+        assertEquals("4 is a square number (2 * 2)", true, CodeWarsTasks.isSquare(4));
+        assertEquals("25 is a square number (5 * 5)", true, CodeWarsTasks.isSquare(25));
+        assertEquals("26 isn't a square number", false, CodeWarsTasks.isSquare(26));
     }
 
 
@@ -41,6 +63,7 @@ public class CodeWarsTasksTest {
         doTest("Conscience does make cowards of us all", "Cncec osmk oad fu losinede aecwrso sal");
         doTest("Imagination is more important than knowledge", "Iaiaini oeipratta nwegmgnto smr motn hnkolde");
     }
+
     private void doTest(String text, String expected) {
         assertEquals(expected, CodeWarsTasks.simpleTransposition(text));
     }
@@ -56,19 +79,41 @@ public class CodeWarsTasksTest {
     @Test
     public void countSmileysTest() {
         List<String> a = new ArrayList<>();
-        a.add(":)"); a.add(":D"); a.add(":-}"); a.add(":-()"); a.add(":):)");
+        a.add(":)");
+        a.add(":D");
+        a.add(":-}");
+        a.add(":-()");
+        a.add(":):)");
         assertEquals(2, CodeWarsTasks.countSmileys(a));
 
         a = new ArrayList<>();
-        a.add(":)"); a.add("XD"); a.add(":0}"); a.add("x:-"); a.add("):-"); a.add("D:");
+        a.add(":)");
+        a.add("XD");
+        a.add(":0}");
+        a.add("x:-");
+        a.add("):-");
+        a.add("D:");
         assertEquals(1, CodeWarsTasks.countSmileys(a));
 
-        a =  new ArrayList<>();
-        a.add(":)"); a.add(":D"); a.add("X-}"); a.add("xo)"); a.add(":X"); a.add(":-3"); a.add(":3");
+        a = new ArrayList<>();
+        a.add(":)");
+        a.add(":D");
+        a.add("X-}");
+        a.add("xo)");
+        a.add(":X");
+        a.add(":-3");
+        a.add(":3");
         assertEquals(2, CodeWarsTasks.countSmileys(a));
 
-        a =  new ArrayList<>();
-        a.add(":)"); a.add(":)"); a.add("x-]"); a.add(":ox"); a.add(";-("); a.add(";-)"); a.add(";~("); a.add(":~D");
+        a = new ArrayList<>();
+        a.add(":)");
+        a.add(":)");
+        a.add("x-]");
+        a.add(":ox");
+        a.add(";-(");
+        a.add(";-)");
+        a.add(";~(");
+        a.add(":~D");
         assertEquals(4, CodeWarsTasks.countSmileys(a));
     }
 }
