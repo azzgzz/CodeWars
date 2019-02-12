@@ -11,6 +11,29 @@ public class CodeWarsTasksTest {
 
 
     @Test
+    public void SampleTestCases() {
+        String[][] tests = {
+                {"[xw][ey]ivdhtnv[mi]###", "xwey"},
+                {"asas[a]asd#asd[b]#asdasd[c]", "ac"},
+                {"[a]#b#[c][d]", "d"},
+                {"[a][b][c]", "abc"},
+                {"##a[a]b[c]#", "c"},
+                {"abde[fgh]ijk", "abdefghijk"},
+                {"ab#de[fgh]ijk", "fgh"},
+                {"ab#de[fgh]ij#k", ""},
+                {"##abde[fgh]ijk", ""},
+                {"##abcde[fgh]", ""},
+                {"abcde[fgh]", "abcdefgh"},
+                {"##abde[fgh]ijk[mn]op", "mn"},
+                {"#abde[fgh]i#jk[mn]op", "mn"},
+                {"[ab]adfd[dd]##[abe]dedf[ijk]d#d[h]#", "abijk"}
+        };
+        for (String[] test : tests)
+            assertEquals("For " + test[0], test[1], AlphabetNuclearWar.alphabetWar(test[0]));
+    }
+
+
+    @Test
     public void ex() {
         char[][] mountain = {
                 "^^^^^^        ".toCharArray(),
